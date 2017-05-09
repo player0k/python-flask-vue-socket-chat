@@ -37,13 +37,13 @@
                 var _this = this
                 socket.on('chat message', function(message) {
                     console.log(message)
-                    _this.messages.push(message)
+                    _this.messages.push({ text: _this.message, date: new Date().toLocaleString() })
                 })
             },
             data: {
                 message: {
                     text: '',
-                    date: new Date().toLocaleString()
+                    date: ''
                 },
                 messages: []
             },
@@ -52,7 +52,7 @@
                     socket.emit('chat message', this.message)
                     this.message = {
                         text: '',
-                        date: new Date().toLocaleString()
+                        date: ''
                     }
                 }
             }
