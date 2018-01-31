@@ -23,32 +23,33 @@
            <li v-for="m in messages">[[ m.text ]] <span class="date">[[ m.date ]]</span></li>
        </ul>
        <form>
-            <input autocomplete="off" v-model="message.text" /><button @click.prevent="sendMessage" >SEND</button>
+            <input autocomplete="off" v-model="message" /><button @click.prevent="sendMessage" >SEND</button>
         </form>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.2/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.4/socket.io.js"></script>
+    <script src="/static/vue.js"></script>
+    <script src="/static/socket.io.js"></script>
     <script>
-        var socket = io();
-        new Vue({
+        var app = new Vue({
             el: '#chat-app',
             delimiters: ["[[", "]]"],
-            created() {
-                var _this = this
-                socket.on('chat message', function(message) {
-                    console.log(message)
-                    _this.messages.push({ text: message, date: new Date().toLocaleString() })
-                })
-            },
             data: {
                 message: '',
-                messages: []
+                messages: [],
+                socket: null
+            },
+            created: function () {
+              this.socket = io("{{ socket_url }}").connect();
             },
             methods: {
-                sendMessage() {
-                    socket.emit('chat message', this.message)
-                    this.message = ''
+                sendMessage: function() {
+                    this.socket.emit('send_chat_message', app.message);
+                    app.message=''
                 }
+            },
+            mounted: function () {
+                this.socket.on('chat_message', function(data) {
+                    app.messages.push({ text: data, date: new Date().toLocaleString() })
+                })
             }
         })
     </script>
