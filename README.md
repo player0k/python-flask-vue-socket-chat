@@ -1,5 +1,5 @@
 # python-flask-vue-socket-chat
-Basic Python Flask Real-time Chat Application
+Basic Python Flask Real-time Vue.js SocketIO Chat Application
 
 Require:
 Python >= 3.5 
