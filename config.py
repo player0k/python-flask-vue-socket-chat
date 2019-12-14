@@ -1,7 +1,7 @@
 SETTINGS = {
-    'app':{
-        'schema':'http://',
-        'host':'127.0.0.1',
-        'port':3000
+    'app': {
+        'schema': 'http://',
+        'host': 'localhost',
+        'port': 9000
     }
 }
