@@ -80,7 +80,7 @@
             socket: null
         },
         created: function () {
-            this.socket = io("{{ socket_url }}").connect();
+            this.socket = io(window.location.href).connect();
         },
         methods: {
             sendMessage: function () {
