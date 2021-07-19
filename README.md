@@ -2,7 +2,7 @@
 Basic Python Flask Real-time Vue.js SocketIO Chat Application
 
 Require:
-Python >= 3.5 
+Python >= 3.8 
 
 Install requirement python libs.
 ```

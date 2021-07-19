@@ -1,4 +1,5 @@
 import eventlet
+import os
 
 eventlet.monkey_patch()
 from flask import Flask, render_template
@@ -12,8 +13,7 @@ sio = SocketIO(app)
 
 @app.route('/')
 def index():
-  socket_url = str(SETTINGS['app']['schema']) + str(SETTINGS['app']['host']) + ':' + str(SETTINGS['app']['port'])
-  return render_template('index.html', socket_url=socket_url)
+  return render_template('index.html')
 
 
 @sio.on('connect')
@@ -33,4 +33,4 @@ def disconnect():
 
 if __name__ == '__main__':
   app.debug = True
-  sio.run(app, host=SETTINGS['app']['host'], port=SETTINGS['app']['port'])
+  sio.run(app, host=os.environ.get('HOST') or SETTINGS['app']['host'], port=os.environ.get('PORT') or SETTINGS['app']['port'])
