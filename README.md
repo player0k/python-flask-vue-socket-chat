@@ -15,3 +15,10 @@ $ python3 app.py
 ```
 
 Open url: http://127.0.0.1:9000
+
+### Start with docker
+```
+$ docker-compose up
+```
+
+Open url http://127.0.0.1:3000
