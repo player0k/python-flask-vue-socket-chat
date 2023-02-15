@@ -12,4 +12,4 @@ monotonic==1.5
 python-engineio==3.11.1
 python-socketio==4.4.0
 six==1.13.0
-Werkzeug==0.16.0
+Werkzeug==2.2.3
