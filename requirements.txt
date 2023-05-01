@@ -2,7 +2,7 @@ Click==7.0
 dnspython==1.16.0
 enum34==1.1.6
 eventlet==0.31.0
-Flask==1.1.1
+Flask==2.3.2
 Flask-SocketIO==4.2.1
 greenlet==0.4.17
 itsdangerous==1.1.0
